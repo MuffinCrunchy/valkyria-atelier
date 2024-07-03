@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from "prop-types";
 
-const RegistrationForm = ({ onSubmit, editUser }) => {
+const RegistrationForm = ({ onSubmit, editForm }) => {
     const [form, setForm] = useState({
-        username: '',
-        email: '',
-        phone: ''
+        title: '',
+        year: '',
+        studio: ''
     });
 
     useEffect(() => {
-        if (editUser) {
-            setForm(editUser); // Efek samping: Mengisi formData dengan data editUser saat komponen dimuat atau editUser berubah
+        if (editForm) {
+            setForm(editForm); // Efek samping: Mengisi formData dengan data editForm saat komponen dimuat atau editForm berubah
         }
-    }, [editUser]); // Menggunakan editUser sebagai dependensi, sehingga efek samping hanya terjadi saat editUser berubah
+    }, [editForm]); // Menggunakan editForm sebagai dependensi, sehingga efek samping hanya terjadi saat editForm berubah
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -24,9 +24,9 @@ const RegistrationForm = ({ onSubmit, editUser }) => {
 
     const reset = () => {
         setForm({
-            username: '',
-            email: '',
-            phone: '',
+            title: '',
+            year: '',
+            studio: '',
         })
     }
 
@@ -40,48 +40,48 @@ const RegistrationForm = ({ onSubmit, editUser }) => {
         <form className="login-form shadow-lg p-5 w-100 rounded-5" onSubmit={handleSubmit}>
             {/* Form Group untuk field Full Name */}
             <div className="mb-3">
-                <label className="mb-1" htmlFor="username">Username</label>
+                <label className="mb-1" htmlFor="title">Title</label>
                 <input
                     type="text"
-                    name="username"
-                    id="username"
+                    name="title"
+                    id="title"
                     className="form-control"
-                    value={form.username}
+                    value={form.title}
                     onChange={handleChange}
-                    placeholder="Username"
+                    placeholder="Title"
                     required // Input ini wajib diisi
                 />
             </div>
-            {/* Form Group untuk field Email */}
+            {/* Form Group untuk field Year */}
             <div className="mb-3">
-                <label className="mb-1" htmlFor="email">Email</label>
+                <label className="mb-1" htmlFor="year">Year</label>
                 <input
-                    type="email"
-                    name="email"
-                    id="email"
+                    type="year"
+                    name="year"
+                    id="year"
                     className="form-control"
-                    value={form.email}
+                    value={form.year}
                     onChange={handleChange}
-                    placeholder="Email"
+                    placeholder="Year"
                     required // Input ini wajib diisi
                 />
             </div>
-            {/* Form Group untuk field Phone */}
+            {/* Form Group untuk field Studio */}
             <div className="mb-3">
-                <label className="mb-1" htmlFor="phone">Phone</label>
+                <label className="mb-1" htmlFor="studio">Studio</label>
                 <input
                     type="tel"
-                    name="phone"
-                    id="phone"
+                    name="studio"
+                    id="studio"
                     className="form-control"
-                    value={form.phone}
+                    value={form.studio}
                     onChange={handleChange}
-                    placeholder="Phone"
+                    placeholder="Studio"
                     required // Input ini wajib diisi
                 />
             </div>
             <button type="submit" className="btn login-btn mt-4 w-100 text-light">
-                {editUser ? 'Update' : 'Submit'} {/* Teks tombol bergantung pada mode edit atau submit */}
+                {editForm ? 'Update' : 'Submit'} {/* Teks tombol bergantung pada mode edit atau submit */}
             </button>
         </form>
     );
@@ -91,5 +91,5 @@ export default RegistrationForm;
 
 RegistrationForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
-    editUser: PropTypes.bool,
+    editForm: PropTypes.bool,
 }

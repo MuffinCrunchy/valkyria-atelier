@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar.jsx";
-import User from "../User/User.jsx";
+import User from "../Data/Data.jsx";
 
 function Home() {
     return (

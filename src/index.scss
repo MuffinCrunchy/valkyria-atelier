@@ -41,3 +41,21 @@ body {
 .navbar {
   background-color: #4f0147;
 }
+
+.card-bg {
+  background: linear-gradient(300deg,#d4a373,#ccd5ae,#fefae0);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
