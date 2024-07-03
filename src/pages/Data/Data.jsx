@@ -7,8 +7,9 @@ function Data() {
     const [data, setData] = useState(null); // State untuk menyimpan pengguna yang sedang diedit
 
     useEffect(() => {
-        // Efek samping untuk mendapatkan data pengguna dari local storage saat komponen dimuat
-        const storedDatas = JSON.parse(localStorage.getItem('datas')) || [];
+        // Efek samping untuk mendapatkan data pengguna dari storage saat komponen dimuat
+        const storedDatas = JSON.parse(sessionStorage.getItem('datas')) || [];
+        // const storedDatas = JSON.parse(localStorage.getItem('datas')) || [];
         setDatas(storedDatas);
     }, []); // Dependensi kosong agar efek samping hanya dijalankan sekali saat komponen dimuat
 
@@ -23,8 +24,9 @@ function Data() {
         }
         setDatas(updatedDatas); // Perbarui state datas
 
-        // Simpan data ke local storage setelah setiap perubahan
-        localStorage.setItem('datas', JSON.stringify(updatedDatas));
+        // Simpan data ke storage setelah setiap perubahan
+        sessionStorage.setItem('datas', JSON.stringify(updatedDatas));
+        // localStorage.setItem('datas', JSON.stringify(updatedDatas));
 
         setData(null); // Hentikan mode edit setelah submit
     };
@@ -40,7 +42,8 @@ function Data() {
         setDatas(updatedDatas);
 
         // Simpan data ke local storage setelah setiap perubahan
-        localStorage.setItem('datas', JSON.stringify(updatedDatas));
+        sessionStorage.setItem('datas', JSON.stringify(updatedDatas));
+        // localStorage.setItem('datas', JSON.stringify(updatedDatas));
     };
 
     return (
