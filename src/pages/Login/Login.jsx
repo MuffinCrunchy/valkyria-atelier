@@ -3,20 +3,27 @@ import { useState } from "react";
 
 function Login() {
     const navigate = useNavigate();
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [form, setForm] = useState({
+        username: "",
+        password: "",
+    })
 
     const handleChange = (e) => {
-        setUsername(e.target.value);
-        setPassword(e.target.value);
+        const { name, value } = e.target;
+        setForm({
+            ...form,
+            [name]: value,
+        })
+        console.log(form)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const { username, password } = form;
         if (username === "admin" && password === "admin") {
             navigate("/home");
         } else {
-            alert("Password and password is unmatched");
+            alert("username and password is unmatched: " + username + " and " + password);
         }
     }
 
@@ -26,11 +33,11 @@ function Login() {
                 <form className="login-form shadow-lg w-25 p-5 rounded-5" onSubmit={handleSubmit}>
                     <h1 className="text-center pb-3 text-light">Login</h1>
                     <div className="form-floating mb-3">
-                        <input type="text" className="form-control" id="username" placeholder="name@example.com" onChange={handleChange}/>
+                        <input type="text" name="username" className="form-control" id="username" placeholder="name@example.com" onChange={handleChange}/>
                         <label htmlFor="username">Username</label>
                     </div>
                     <div className="form-floating">
-                        <input type="password" className="form-control" id="password" placeholder="Password" onChange={handleChange}/>
+                        <input type="password" name="password" className="form-control" id="password" placeholder="Password" onChange={handleChange}/>
                         <label htmlFor="password">Password</label>
                     </div>
                     <button type={"submit"} className="btn login-btn mt-4 w-100 text-light">Login</button>

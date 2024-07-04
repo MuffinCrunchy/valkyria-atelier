@@ -48,7 +48,7 @@ const RegistrationForm = ({ onSubmit, editForm }) => {
                     className="form-control"
                     value={form.title}
                     onChange={handleChange}
-                    placeholder="Title"
+                    placeholder="Neon Genesis Evangelion"
                     required // Input ini wajib diisi
                 />
             </div>
@@ -62,7 +62,7 @@ const RegistrationForm = ({ onSubmit, editForm }) => {
                     className="form-control"
                     value={form.year}
                     onChange={handleChange}
-                    placeholder="Year"
+                    placeholder="1998"
                     required // Input ini wajib diisi
                 />
             </div>
@@ -76,7 +76,7 @@ const RegistrationForm = ({ onSubmit, editForm }) => {
                     className="form-control"
                     value={form.studio}
                     onChange={handleChange}
-                    placeholder="Studio"
+                    placeholder="A-1 Pictures"
                     required // Input ini wajib diisi
                 />
             </div>
@@ -91,5 +91,5 @@ export default RegistrationForm;
 
 RegistrationForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
-    editForm: PropTypes.bool,
+    editForm: PropTypes.array,
 }

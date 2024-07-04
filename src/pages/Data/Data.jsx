@@ -27,6 +27,8 @@ function Data() {
         // Simpan data ke storage setelah setiap perubahan
         sessionStorage.setItem('datas', JSON.stringify(updatedDatas));
         // localStorage.setItem('datas', JSON.stringify(updatedDatas));
+        console.log(data);
+        console.log(typeof data);
 
         setData(null); // Hentikan mode edit setelah submit
     };
